@@ -9,13 +9,13 @@ class MainView extends React.Component {
       articles:[],
       loading: false
     }
-  }
+  } 
 
   componentDidMount() {
     this.setState({ loading: true })
     fetch('https://conduit.productionready.io/api/articles?limit=10&offset=0')
       .then(response => response.json())
-      .then(json => json.results)
+      .then(json => json.articles)
       .then(articles => this.setState({
         articles,
         loading: false

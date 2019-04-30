@@ -8,7 +8,7 @@ class Home extends React.Component {
     constructor(props){
         super(props);
         if(!props){
-            props.appName ="ReactTest";
+            props.appName ="Save note";
         }
     }
 
