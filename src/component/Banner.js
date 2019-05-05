@@ -5,8 +5,8 @@ const Banner = ({ appName, token }) => {
         return null;
     }
     return (
-        <div class="banner">
-            <div class="container">
+        <div className="banner">
+            <div className="container">
                 <h1 className="logo-font">
                     {appName}
                 </h1>
