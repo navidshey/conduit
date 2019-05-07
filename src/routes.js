@@ -23,7 +23,7 @@ const routes = (
 
             <Route exact path="/" component={Home} />
             <Route path="/article/:id" component={Article} />
-            <Route path="*" component={Whoops404} />
+            {/* <Route path="*" component={Whoops404} /> */}
         </div>  
     </Router>
 )
