@@ -21,7 +21,7 @@ const routes = (
           </ul> 
         </nav> */}
 
-            <Route path="/" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route path="/article/:id" component={Article} />
             <Route path="*" component={Whoops404} />
         </div>  

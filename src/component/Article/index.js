@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import ArticleMeta from './ArticleMeta';
+// import marked from 'react-marked';
 
 class Article extends React.Component{
 
@@ -19,16 +21,17 @@ class Article extends React.Component{
             article
           })
           )
-      };
+      }; 
 
-    render() {
+    render() {  
         if (!this.state.article.author) {
           return null;
         }
     
-        // const markup = { __html: marked(this.props.article.body, { sanitize: true }) };
-        // const canModify = this.props.currentUser &&
-        //   this.props.currentUser.username === this.props.article.author.username;
+
+        // const markup = { __html: marked(this.state.article.body, { sanitize: true }) };
+        const canModify = this.state.currentUser &&
+          this.state.currentUser.username === this.state.article.author.username;
         return (
           <div className="article-page">
     
@@ -36,9 +39,9 @@ class Article extends React.Component{
               <div className="container">
     
                 <h1>{this.state.article.title}</h1>
-                {/* <ArticleMeta
+                <ArticleMeta
                   article={this.state.article}
-                  canModify={canModify} /> */}
+                  canModify={canModify} />
     
               </div>
             </div>
