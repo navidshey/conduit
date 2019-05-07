@@ -10,7 +10,7 @@ const Tags = props => {
                         tags.map((item) => {
                             return (
                                 <Link key={item} className="tag-default tag-pill" to="" >
-                                    {item.title}
+                                    {item}
                                 </Link>
                             )
                         })

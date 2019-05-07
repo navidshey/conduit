@@ -42,7 +42,6 @@ class Article extends React.Component{
                 <ArticleMeta
                   article={this.state.article}
                   canModify={canModify} />
-    
               </div>
             </div>
     

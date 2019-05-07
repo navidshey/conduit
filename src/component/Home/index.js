@@ -10,7 +10,22 @@ class Home extends React.Component {
         if(!props){
             props.appName ="Save note";
         }
+        this.state={
+            tags:[]
+          }
     }
+
+    componentDidMount() {
+        this.setState({ loading: true })
+        fetch('https://conduit.productionready.io/api/tags')
+          .then(response => response.json())
+          .then(json => json.tags)
+          .then(tags => 
+            this.setState({
+            tags
+          }) 
+          )
+      }; 
 
     render() {
         return (
@@ -24,7 +39,7 @@ class Home extends React.Component {
                             <div className="sidebar">
 
                                 <p>Popular Tags</p>
-                                <Tags tags={this.props.tags}/>
+                                <Tags tags={this.state.tags}/>
 
                             </div>
                         </div>
