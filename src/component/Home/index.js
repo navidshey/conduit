@@ -5,42 +5,44 @@ import Tags from './Tags'
 
 class Home extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        if(!props){
-            props.appName ="Save note";
+        if (!props) {
+            props.appName = "Save note";
         }
-        this.state={
-            tags:[]
-          }
+        this.state = {
+            tags: []
+        }
     }
 
     componentDidMount() {
         this.setState({ loading: true })
         fetch('https://conduit.productionready.io/api/tags')
-          .then(response => response.json())
-          .then(json => json.tags)
-          .then(tags => 
-            this.setState({
-            tags
-          }) 
-          )
-      }; 
+            .then(response => response.json())
+            .then(json => json.tags)
+            .then(tags =>
+                this.setState({
+                    tags
+                })
+            )
+    };
 
     render() {
         return (
-            <div className="home-page">
-                <Banner token={this.props.token} appName={this.props.appName} ></Banner>
-                <div className="container page">
-                    <div className="row">
-                        <MainView />
+            <div>
+                <div className="home-page">
+                    <Banner token={this.props.token} appName={this.props.appName} ></Banner>
+                    <div className="container page">
+                        <div className="row">
+                            <MainView />
 
-                        <div className="col-md-3">
-                            <div className="sidebar">
+                            <div className="col-md-3">
+                                <div className="sidebar">
 
-                                <p>Popular Tags</p>
-                                <Tags tags={this.state.tags}/>
+                                    <p>Popular Tags</p>
+                                    <Tags tags={this.state.tags} />
 
+                                </div>
                             </div>
                         </div>
                     </div>
