@@ -1,12 +1,9 @@
-// import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
 import React, { Component } from 'react'
 import {BrowserRouter as Router,  Route, Switch } from 'react-router-dom'
-import Home from './component/Home'
-import Article from './component/Article'
-import { Whoops404 } from './component/Whoops404'
+import Home from './component/Home';
+import Article from './component/Article';
 import Navbar from './component/NavBar';
+import Login from './component/Login';
 
 class App extends Component {
   render() {
@@ -17,6 +14,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/article/:id" component={Article} />
+            <Route path="/login" component={Login} />
           </Switch>
         </Router>
       </div>
