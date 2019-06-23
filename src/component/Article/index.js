@@ -72,6 +72,7 @@ class Article extends React.Component{
               <hr />
     
               <div className="article-actions">
+                {this.state.article.body}
               </div>
     
               {/* <div className="row">
