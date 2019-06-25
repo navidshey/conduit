@@ -1,7 +1,9 @@
 import React from 'react';
-import Banner from '../Banner'
-import MainView from './MainView'
-import Tags from './Tags'
+import Banner from '../Banner';
+import MainView from './MainView';
+import Tags from './Tags';
+import propTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 class Home extends React.Component {
 
@@ -10,22 +12,7 @@ class Home extends React.Component {
         if (!props) {
             props.appName = "Save note";
         }
-        this.state = {
-            tags: []
-        }
     }
-
-    componentDidMount() {
-        this.setState({ loading: true })
-        fetch('https://conduit.productionready.io/api/tags')
-            .then(response => response.json())
-            .then(json => json.tags)
-            .then(tags =>
-                this.setState({
-                    tags
-                })
-            )
-    };
 
     render() {
         return (
@@ -40,7 +27,7 @@ class Home extends React.Component {
                                 <div className="sidebar">
 
                                     <p>Popular Tags</p>
-                                    <Tags tags={this.state.tags} />
+                                    <Tags tags={this.props.tags} />
 
                                 </div>
                             </div>
@@ -52,4 +39,14 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+Home.propTypes = {
+    tags: propTypes.array.isRequired
+};
+
+function mapStateToProps(state) {
+    return {
+        tags: state.tags
+    };
+}
+
+export default connect(mapStateToProps)(Home);

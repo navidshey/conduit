@@ -1,25 +1,18 @@
 import ArticleList from '../ArticleList';
 import React from 'react';
+import propTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 class MainView extends React.Component {
 
   constructor(props){
     super(props)
     this.state={
-      articles:[],
       loading: false
     }
   } 
 
   componentDidMount() {
-    this.setState({ loading: true })
-    fetch('https://conduit.productionready.io/api/articles?limit=10&offset=0')
-      .then(response => response.json())
-      .then(json => json.articles)
-      .then(articles => this.setState({
-        articles,
-        loading: false
-      }))
   };
 
   render(){
@@ -39,13 +32,22 @@ class MainView extends React.Component {
   
           </ul> */}
       </div>
-
       <ArticleList
-        articles={this.state.articles}
+        articles={this.props.articles}
         loading={this.state.loading} />
     </div>
   );
         }
 };
 
-export default MainView;
+MainView.propTypes = {
+  articles: propTypes.array.isRequired
+};
+
+function mapStateToProps(state) {
+  return {
+    articles: state.articles
+  };
+}
+
+export default connect(mapStateToProps)(MainView);

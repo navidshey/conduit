@@ -16,7 +16,7 @@ const Tags = props => {
                         })
                     }
 
-                    <p  class="tag-default tag-pill">dragons</p>
+                    <p  className="tag-default tag-pill">dragons</p>
                 </div>
         );
     }else{
